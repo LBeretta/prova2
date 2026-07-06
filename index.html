@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="it">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Geberit Experience Center - PDF Generator</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <main class="shell">
+    <section class="hero">
+      <div class="hero-copy">
+        <p class="eyebrow">Geberit Experience Center</p>
+        <h1>Genera inviti PDF personalizzati in pochi secondi.</h1>
+        <p class="lead">Compila i campi personalizzabili e scarica il PDF finale già impaginato sul template ufficiale.</p>
+        <div class="hero-actions">
+          <a href="#generator" class="button primary">Crea PDF</a>
+          <button class="button ghost" id="fillDemo" type="button">Compila esempio</button>
+        </div>
+      </div>
+      <div class="preview-card" aria-label="Anteprima template">
+        <embed src="assets/template.pdf#toolbar=0&navpanes=0" type="application/pdf" />
+      </div>
+    </section>
+
+    <section class="panel" id="generator">
+      <div class="panel-header">
+        <div>
+          <p class="eyebrow">Form dinamico</p>
+          <h2>Dati da inserire nel PDF</h2>
+        </div>
+        <p class="hint">Le posizioni sono lette da <code>template.json</code>.</p>
+      </div>
+
+      <form id="pdfForm" class="form-grid">
+        <div class="field"><label for="data1">Data prima giornata</label><input id="data1" name="data1" type="date" /></div>
+        <div class="field readonly-field"><label>Luogo</label><div class="readonly-value">Via Tortona 31, Milano</div><p class="field-note">Campo fisso nel PDF</p></div>
+
+        <div class="agenda-row"><div class="field small"><label for="orario1">Orario 1</label><select id="orario1" name="orario1"><option value="">Seleziona</option></select></div><div class="field"><label for="att1">Attività 1</label><select id="att1" name="att1" class="activity-select"><option value="">Seleziona</option></select><input id="att1_custom" name="att1_custom" class="custom-activity" type="text" placeholder="Scrivi attività personalizzata" hidden /></div></div>
+        <div class="agenda-row"><div class="field small"><label for="orario2">Orario 2</label><select id="orario2" name="orario2"><option value="">Seleziona</option></select></div><div class="field"><label for="att2">Attività 2</label><select id="att2" name="att2" class="activity-select"><option value="">Seleziona</option></select><input id="att2_custom" name="att2_custom" class="custom-activity" type="text" placeholder="Scrivi attività personalizzata" hidden /></div></div>
+        <div class="agenda-row"><div class="field small"><label for="orario3">Orario 3</label><select id="orario3" name="orario3"><option value="">Seleziona</option></select></div><div class="field"><label for="att3">Attività 3</label><select id="att3" name="att3" class="activity-select"><option value="">Seleziona</option></select><input id="att3_custom" name="att3_custom" class="custom-activity" type="text" placeholder="Scrivi attività personalizzata" hidden /></div></div>
+        <div class="agenda-row"><div class="field small"><label for="orario4">Orario 4</label><select id="orario4" name="orario4"><option value="">Seleziona</option></select></div><div class="field"><label for="att4">Attività 4</label><select id="att4" name="att4" class="activity-select"><option value="">Seleziona</option></select><input id="att4_custom" name="att4_custom" class="custom-activity" type="text" placeholder="Scrivi attività personalizzata" hidden /></div></div>
+        <div class="agenda-row"><div class="field small"><label for="orario5">Orario 5</label><select id="orario5" name="orario5"><option value="">Seleziona</option></select></div><div class="field"><label for="att5">Attività 5</label><select id="att5" name="att5" class="activity-select"><option value="">Seleziona</option></select><input id="att5_custom" name="att5_custom" class="custom-activity" type="text" placeholder="Scrivi attività personalizzata" hidden /></div></div>
+
+        <div class="field"><label for="data2">RSVP entro</label><input id="data2" name="data2" type="date" /></div>
+
+        <div class="form-actions">
+          <button class="button primary" type="submit">Genera e scarica PDF</button>
+          <button class="button secondary" id="previewBtn" type="button">Genera anteprima</button>
+        </div>
+      </form>
+    </section>
+
+    <section class="panel result-panel" id="resultPanel" hidden>
+      <div class="panel-header">
+        <div><p class="eyebrow">Output</p><h2>Anteprima PDF generato</h2></div>
+        <a id="downloadLink" class="button primary" download="geberit-experience-center.pdf">Scarica PDF</a>
+      </div>
+      <iframe id="pdfPreview" title="Anteprima PDF generato"></iframe>
+    </section>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/pdf-lib@1.17.1/dist/pdf-lib.min.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
